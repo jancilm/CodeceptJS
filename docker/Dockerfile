@@ -6,9 +6,7 @@ RUN apt-get update --no-install-recommends && \
     apt-get clean && \
     update-ca-certificates -f;
 
-WORKDIR /app
-COPY . .
-
 RUN npm install
 
-CMD ["/app/docker/run-tests.sh"]
+RUN npm run load-test && npx codeceptjs run --steps
+RUN ls report
