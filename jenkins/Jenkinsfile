@@ -1,6 +1,6 @@
-    node {
+node {
 
-    def imageTag = "jancilm/rest-demo:${env.BUILD_NUMBER}"
+    def imageTag = "peterngtr/rest-demo:${env.BUILD_NUMBER}"
     def dockerHome = tool 'myDocker'
 
     stage("Initializing") {
@@ -16,7 +16,7 @@
 
     stage("Running Tests") {
         try {
-            sh "jenkins/run-tests.bat ${env.BUILD_NUMBER}"
+            sh "jenkins/run-tests.sh ${env.BUILD_NUMBER}"
         }
         finally {
             sh "ls report/"
